@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="../static/css/journal.css">
+{% extends "base.html" %}
+{% block content %}
+<h2>Works log</h2>
+{% for item in jobs %}
+<div class="data">
+    <h3>Action #{{loop.index}}</h3>
+    <table style="width: 90%;">
+        <tr style="background: #d9d9d9">
+            <td>Tile of activity</td>
+            <td>Team leader</td>
+            <td>Duration</td>
+            <td>List of collaborators</td>
+            <td>Is finished</td>
+        </tr>
+        <tr>
+            <td style="background: #e3cced">{{item.job}}</td>
+            <td style="background: #e3cced">{{item.team_leader}}</td>
+            <td style="background: #e3cced">{{item.work_size}} hour</td>
+            <td style="background: #e3cced">{{item.collaborators}}</td>
+            <td style="background: #ffc2cc">
+                {% if item.is_finished == 'True' %}
+                Is finished
+                {% else %}
+                Is not finished
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+{% endblock %}
